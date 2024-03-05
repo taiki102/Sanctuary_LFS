@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
         if (EnemyList.Count == 0)
         {
             // Clear
-            displaytext.text = "ルームクリア";
+            //displaytext.text = "ルームクリア";
             RoomClear = true;
             //Debug.Log("Clear");
         }       
@@ -165,12 +165,12 @@ public class GameManager : MonoBehaviour
 
     public void SetText(int x,int y)
     {
-        displaytext.text = $"残りの敵の数　{x}/{y}"; 
+        //displaytext.text = $"残りの敵の数　{x}/{y}"; 
     }
 
     public void SetSubText()
     {
-        displaytext2.text = $"倒した敵の数  {ECount}";
+        //displaytext2.text = $"倒した敵の数  {ECount}";
     }
 
     public void SetUpNewRoom(WallPattern wp)
