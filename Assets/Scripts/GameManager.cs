@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
         if (EnemyList.Count == 0)
         {
             // Clear
-            displaytext.text = "ƒ‹[ƒ€ƒNƒŠƒA";
+            displaytext.text = "ãƒ«ãƒ¼ãƒ ã‚¯ãƒªã‚¢";
             RoomClear = true;
             //Debug.Log("Clear");
         }       
@@ -165,12 +165,12 @@ public class GameManager : MonoBehaviour
 
     public void SetText(int x,int y)
     {
-        displaytext.text = $"c‚è‚Ì“G‚Ì”@{x}/{y}"; 
+        displaytext.text = $"æ®‹ã‚Šã®æ•µã®æ•°ã€€{x}/{y}"; 
     }
 
     public void SetSubText()
     {
-        displaytext2.text = $"“|‚µ‚½“G‚Ì”  {ECount}";
+        displaytext2.text = $"å€’ã—ãŸæ•µã®æ•°  {ECount}";
     }
 
     public void SetUpNewRoom(WallPattern wp)
