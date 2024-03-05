@@ -157,7 +157,6 @@ public class PlayerChara : MonoBehaviour
         if(gameObject.activeSelf)
         StartCoroutine(NoDamage());
     }
-
     public bool Nodamage = false;
 
     IEnumerator NoDamage()

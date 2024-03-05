@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject endPanel;
 
+    [SerializeField]
+    private GameObject wingsPrefs;
 
     public void dispendPanel()
     {
@@ -142,10 +144,12 @@ public class GameManager : MonoBehaviour
 
     public void RemoveList(EnemyBase eb)
     {
+        Instantiate(wingsPrefs,eb.EnemyTf().position,Quaternion.identity);
+
         ECount++;
         EnemyList.Remove(eb);
         SetText(EnemyList.Count, MaxCount);
-        SetSubText();
+        //SetSubText();
 
         if (EnemyList.Count == 0)
         {
@@ -156,8 +160,8 @@ public class GameManager : MonoBehaviour
         }       
     }
 
-
     int ECount = 0;
+    int WCount = 0;
 
     public void SetText(int x,int y)
     {
@@ -200,6 +204,12 @@ public class GameManager : MonoBehaviour
     {
         CurrentRoomPos += new Vector3(27f * dir.x, 14f * dir.y, 0);
         displaytext.text = "";
+    }
+
+    public void GetWing()
+    {
+        WCount++;
+        displaytext2.text = $"{WCount}";
     }
 
     /*
