@@ -55,10 +55,11 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
+        /*
         if (Input.GetButtonDown("Submit"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        }*/
     }
 
     public void StartVeiwChange(Vector3 Dir, bool test)

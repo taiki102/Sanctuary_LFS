@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,41 @@ public class Wing : MonoBehaviour
     float Rad = 1.5f;
     float Rad2 = 0.2f;
 
-    float speed = 5.0f;
+    float speed = 10.0f;
+
+    private void Start()
+    {
+       // StartCoroutine(UpMove());
+    }
+
+    IEnumerator UpMove()
+    {
+        Vector3 pos = transform.position;
+
+        float time = 0f;
+        float maxtime = 1.0f;
+        float speed = 10;
+
+        while(time < maxtime)
+        {
+            time += Time.deltaTime;
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            yield return null;
+        }
+
+        while (time > maxtime)
+        {
+            time -= Time.deltaTime;
+            player.Translate(Vector3.down * speed / 2  * Time.deltaTime);
+            yield return null;
+
+            if (pos.y >= transform.position.y)
+            {
+                break;
+            }
+        }
+    }
+
     void Update()
     {
         if (!Chaising)
