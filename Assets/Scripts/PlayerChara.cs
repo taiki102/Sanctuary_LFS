@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*--------------------------------------*/
 /*プレイヤーコントローラー
@@ -202,6 +203,7 @@ public class PlayerOperation{
         inputActions.GamePad.RT.performed += ctx => playerScript.AimDownSight(true);
         //inputActions.GamePad.LT.canceled += ctx => playerScript.AimDownSight(false);
         inputActions.GamePad.RT.canceled += ctx => playerScript.AimDownSight(false);
+        inputActions.GamePad.Restart.performed += ctx => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

@@ -354,6 +354,15 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a5db7b4-92b1-417a-a7e2-62228998a13c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -444,6 +453,17 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
                     ""action"": ""RT"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1badc2f-d71f-4c61-90cb-a770af52eee5"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -488,6 +508,7 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
         m_GamePad_RB = m_GamePad.FindAction("RB", throwIfNotFound: true);
         m_GamePad_LT = m_GamePad.FindAction("LT", throwIfNotFound: true);
         m_GamePad_RT = m_GamePad.FindAction("RT", throwIfNotFound: true);
+        m_GamePad_Restart = m_GamePad.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -729,6 +750,7 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePad_RB;
     private readonly InputAction m_GamePad_LT;
     private readonly InputAction m_GamePad_RT;
+    private readonly InputAction m_GamePad_Restart;
     public struct GamePadActions
     {
         private @PlayerCtr m_Wrapper;
@@ -741,6 +763,7 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
         public InputAction @RB => m_Wrapper.m_GamePad_RB;
         public InputAction @LT => m_Wrapper.m_GamePad_LT;
         public InputAction @RT => m_Wrapper.m_GamePad_RT;
+        public InputAction @Restart => m_Wrapper.m_GamePad_Restart;
         public InputActionMap Get() { return m_Wrapper.m_GamePad; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -774,6 +797,9 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
             @RT.started += instance.OnRT;
             @RT.performed += instance.OnRT;
             @RT.canceled += instance.OnRT;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
         }
 
         private void UnregisterCallbacks(IGamePadActions instance)
@@ -802,6 +828,9 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
             @RT.started -= instance.OnRT;
             @RT.performed -= instance.OnRT;
             @RT.canceled -= instance.OnRT;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
         }
 
         public void RemoveCallbacks(IGamePadActions instance)
@@ -856,5 +885,6 @@ public partial class @PlayerCtr: IInputActionCollection2, IDisposable
         void OnRB(InputAction.CallbackContext context);
         void OnLT(InputAction.CallbackContext context);
         void OnRT(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
